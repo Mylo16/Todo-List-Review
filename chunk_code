@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/61d7e584a6.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300&display=swap" rel="stylesheet">
+    <title>Wbpack Exercise</title>
+</head>
+<body id="body">
+    <section id="to-do-section">
+        <div class="to-do-title-container border">
+            <h2 class="to-do-title">Today's To do</h2>
+            <div class="recycle">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                  </svg>
+            </div>
+        </div>
+        <div class="addTodo-list border">
+            <form id="addForm" action="">
+                <input type="text" placeholder="Add to your list..." class="add-list">
+            </form>
+            <div class="add">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z"/>
+                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                  </svg>
+            </div>
+        </div>
+        <ul id="to-do-lists">
+
+        </ul>
+        <div class="clear-all">
+            <a href="#completed" id="clear">Clear all completed</a>
+        </div>
+    </section>
+    <p class="note">Note: Please double click on a list to allow editing</p>
+</body>
+</html>
+
+
+
+
+
+/***** STYLE.CSS CODE *****/
+
+body {
+  background-color: rgba(221, 235, 235, 0.501);
+  font-family: 'Poppins', sans-serif;
+}
+
+p,
+a {
+  color: rgb(68, 68, 79);
+  text-decoration: none;
+}
+
+#to-do-section {
+  width: 60%;
+  margin: auto;
+  display: grid;
+  gap: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 2px 5px 7px -2px rgba(0, 0, 0, 0.57);
+}
+
+.border {
+  height: 3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 2em;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.143);
+}
+
+#to-do-lists {
+  padding-inline-start: 0%;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.list {
+  height: 3em;
+  padding-left: 2em;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.143);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-left {
+  display: flex;
+  align-items: center;
+}
+
+.dots,
+.recycle,
+.add {
+  margin-right: 1em;
+}
+
+.dots:hover {
+  cursor: all-scroll;
+}
+
+.addTodo-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.add-list {
+  border: none;
+  outline: none;
+  font-style: italic;
+  font-size: 1em;
+  width: 250%;
+}
+
+.description {
+  outline: none;
+  border: none;
+  font-size: 1em;
+  color: rgb(68, 68, 79);
+  width: 25em;
+  height: 2em;
+  background-color: transparent;
+}
+
+#checkbox {
+  margin-right: 1em;
+}
+
+.clear-all {
+  background-color: rgba(221, 235, 235, 0.501);
+  text-align: center;
+  color: rgb(68, 68, 79);
+  height: 3em;
+  margin-block-start: 0%;
+  margin-block-end: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.active {
+  background-color: rgb(232, 253, 115);
+}
+
+#del {
+  font-size: 1em;
+  position: relative;
+  left: 2%;
+}
+
+.del {
+  display: none;
+}
+
+.active .dots {
+  display: none;
+}
+
+.active .del {
+  display: block;
+  margin-right: 2em;
+  position: relative;
+}
+
+.note {
+  text-align: center;
+  margin-top: 2em;
+}
+
+
+
+
+/***** INDEX.JS CODE *****/
+
+import './style.css';
+import localstorage from './localstorage.js';
+import userInteraction from './userInteraction.js';
+import { statusCheck, statusUncheck } from './status.js';
+
+/* eslint max-classes-per-file: ["error", 3] */
+
+class List {
+  constructor(description, index) {
+    this.description = description;
+    this.index = index;
+  }
+}
+
+const { UI } = userInteraction;
+const { StorageInLocal } = localstorage;
+const store = new StorageInLocal();
+const storeArray = store.getLists();
+
+storeArray.map(() => {
+  for (let i = 0; i < storeArray.length - 1; i += 1) {
+    if (storeArray[i].index > storeArray[i + 1].index) {
+      const temp = storeArray[i];
+      storeArray[i] = storeArray[i + 1];
+      storeArray[i + 1] = temp;
+    }
+  }
+  return null;
+});
+
+document.addEventListener('DOMContentLoaded', UI.displayAllLists);
+document.querySelector('#addForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const description = document.querySelector('.add-list').value;
+  const index = store.numberOfLists;
+  const list = new List(description, index);
+  UI.addList(list);
+  store.addList(list);
+  window.location.reload();
+  UI.clearFields();
+});
+
+$('#to-do-lists').on('dblclick', 'li', function active() {
+  $(this).parent().find('li.active').removeClass('active');
+  $(this).addClass('active');
+});
+
+document.getElementById('to-do-lists').addEventListener('click', (e) => {
+  if (e.target.classList.contains('del')) {
+    const btnID = e.target.parentElement.id;
+    const arrValues = btnID.split('-');
+    const idString = arrValues[arrValues.length - 1];
+    const id = parseInt(idString, 10);
+    store.removeList(id);
+    UI.deleteList(e.target);
+    window.location.reload();
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  Array.from(document.querySelectorAll('.list')).forEach((item) => {
+    const btnID = item.id;
+    const arrValues = btnID.split('-');
+    const idString = arrValues[arrValues.length - 1];
+    const index = parseInt(idString, 10);
+    item.children[0].children[1].addEventListener('change', () => {
+      const description = item.children[0].children[1].value;
+      store.updateList(index, description);
+      window.location.reload();
+    });
+    item.children[0].children[0].addEventListener('change', (e) => {
+      if (item.children[0].children[0].checked) {
+        const btnID = e.target.id;
+        const arrValues = btnID.split('-');
+        const idString = arrValues[arrValues.length - 1];
+        const index = parseInt(idString, 10);
+        statusCheck(index);
+        window.location.reload();
+        item.children[0].children[0].checked = storeArray[index - 1].completed;
+      } else {
+        const btnID = e.target.id;
+        const arrValues = btnID.split('-');
+        const idString = arrValues[arrValues.length - 1];
+        const index = parseInt(idString, 10);
+        statusUncheck(index);
+        window.location.reload();
+        item.children[0].children[0].checked = storeArray[index - 1].completed;
+      }
+    });
+    item.children[0].children[0].checked = storeArray[index - 1].completed;
+  });
+});
+
+document.querySelector('#clear').addEventListener('click', () => {
+  store.removeSelectedLists();
+  window.location.reload();
+  UI.displayAllLists();
+});
